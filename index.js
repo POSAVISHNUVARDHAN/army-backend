@@ -14,12 +14,13 @@ const dashboardRouter = require('./routes/dashboard');
 // Import auth routes
 
 const app = express();
-const PORT = 5000;
-
-// Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "https://army-frontend.vercel.app", // 🔁 Use your actual frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(bodyParser.json());
-
+app.use(express.json());
 // Routes
 app.use('/api', authRoutes);
 app.use('/api', authRouter);
