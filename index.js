@@ -24,6 +24,11 @@ app.use(cors({
   credentials: true
 }));
 app.use(bodyParser.json());
+// index.js or api/index.js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello from backend!' });
+}
+
 
 // Routes
 app.use('/api', authRoutes);
