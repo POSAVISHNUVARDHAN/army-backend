@@ -14,6 +14,7 @@ const dashboardRouter = require('./routes/dashboard');
 // Import auth routes
 
 const app = express();
+const PORT = 5000;
 app.use(cors({
   origin: "https://army-frontend.vercel.app", // 🔁 Use your actual frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"],
