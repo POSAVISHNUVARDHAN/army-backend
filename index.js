@@ -15,20 +15,12 @@ const dashboardRouter = require('./routes/dashboard');
 // Import auth routes
 
 const app = express();
+const port = process.env.PORT || 5000;
 
 
 // Middlewares
-app.use(cors({
-  origin: "https://army-frontend.vercel.app", // Change this to your deployed frontend
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(express.json())
 app.use(bodyParser.json());
-// index.js or api/index.js
-export default function handler(req, res) {
-  res.status(200).json({ message: 'Hello from backend!' });
-}
-
 
 // Routes
 app.use('/api', authRoutes);
@@ -44,4 +36,7 @@ app.use('/api/purchases', purchasesRouter);
 module.exports.handler = serverless(app);
 
 // Start the server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
